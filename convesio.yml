@@ -1,0 +1,28 @@
+import:
+  - convesio/wordpress:latest
+  # - origin: convesio/redis-cluster:4.0
+  #   deligates:
+  #     redis-name-change: change_redis
+  #     redis-block: siltuss
+
+#  - file::extensions/bot
+
+# services:
+#   wordpress:
+#     source:
+#       type: this is have to be replaced
+#       image: bitname/wordpress--test
+#       copy:
+#         - ./plugins:/var/www/html/wp-contents/plugins
+#         - ./themes:/var/www/html/wp-contents/themes
+#       first_run: ./scripts/first-run.sh
+#       boot: apache2
+
+# storage:
+#   uploads:
+#     type: shared
+#     size: 100
+#     sftp: true
+#   cache:
+#     type: io
+#     size: 10
