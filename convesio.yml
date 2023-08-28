@@ -1,6 +1,5 @@
 import:
   - convesio/wordpress:latest
-  - convesio/mysql:latest
   # - origin: convesio/redis-cluster:4.0
   #   deligates:
   #     redis-name-change: change_redis
