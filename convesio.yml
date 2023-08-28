@@ -15,7 +15,8 @@ services:
       WORDPRESS_DB_USER : "sumanTest"
       WORDPRESS_DB_PASSWORD : "sumanTest"
   mysql:
-    environment:
-      MYSQL_DATABASE : "wordpress"
-      MYSQL_USER : "sumanTest"
-      MYSQL_PASSWORD : "sumanTest"
+    source:
+      environment:
+        MYSQL_DATABASE : "wordpress"
+        MYSQL_USER : "sumanTest"
+        MYSQL_PASSWORD : "sumanTest"
