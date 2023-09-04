@@ -7,16 +7,16 @@ import:
 
 #  - file::extensions/bot
 
-# services:
-#   wordpress:
-#     environment:
-#       WORDPRESS_DB_HOST: "mysql"
-#       WORDPRESS_DB_NAME: "my_wordpress"
-#       WORDPRESS_DB_USER: "sumanTest"
-#       WORDPRESS_DB_PASSWORD: "sumanTest"
+services:
+  wordpress:
+    environment:
+      WORDPRESS_DB_HOST: "mysql"
+      WORDPRESS_DB_NAME: "my_wordpress"
+      WORDPRESS_DB_USER: "sumanTest"
+      WORDPRESS_DB_PASSWORD: "sumanTest"
 
-#   mysql:
-#     environment:
-#       MYSQL_DATABASE: "my_wordpress"
-#       MYSQL_USER: "sumanTest"
-#       MYSQL_PASSWORD: "sumanTest"
+  mysql:
+    environment:
+      MYSQL_DATABASE: "my_wordpress"
+      MYSQL_USER: "sumanTest"
+      MYSQL_PASSWORD: "sumanTest"
