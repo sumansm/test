@@ -13,10 +13,21 @@ services:
       WORDPRESS_DB_HOST: "mysql"
       WORDPRESS_DB_NAME: "my_wordpress"
       WORDPRESS_DB_USER: "sumanTest"
-      WORDPRESS_DB_PASSWORD: "sumanTest"
+      WORDPRESS_DB_PASSWORD: "sumanTest" 
 
   mysql:
     environment:
       MYSQL_DATABASE: "my_wordpress"
       MYSQL_USER: "sumanTest"
       MYSQL_PASSWORD: "sumanTest"
+
+deployemts:
+     inputs:
+          -
+               name: domain
+               label: Domain
+               type: text
+               required: true
+               default: domin.com
+               description: abcd
+               size: 1x
