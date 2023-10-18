@@ -11,7 +11,7 @@ services:
   wordpress:
     environment:
       WORDPRESS_DB_HOST: "mysql"
-      WORDPRESS_DB_NAME: "my_wordpress"
+      WORDPRESS_DB_NAME: "${my_wordpress}"
       WORDPRESS_DB_USER: "sumanTest"
       WORDPRESS_DB_PASSWORD: "sumanTest" 
 
@@ -24,7 +24,7 @@ services:
 deployemts:
      inputs:
           -
-               name: domain
+               name: my_wordpress
                label: Domain
                type: text
                required: true
