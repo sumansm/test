@@ -21,13 +21,4 @@ services:
       MYSQL_USER: "sumanTest"
       MYSQL_PASSWORD: "sumanTest"
 
-deployemts:
-     inputs:
-          -
-               name: my_wordpress_pass
-               label: WORDPRESS_DB_PASSWORD
-               type: text
-               required: true
-               default: domin.com
-               description: abcd
-               size: 1x
+
