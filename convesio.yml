@@ -24,7 +24,7 @@ services:
 deployemts:
      inputs:
           -
-               name: ${my_wordpress_pass}
+               name: my_wordpress_pass
                label: WORDPRESS_DB_PASSWORD
                type: text
                required: true
