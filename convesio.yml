@@ -20,13 +20,13 @@ services:
       MYSQL_DATABASE: "my_wordpress"
       MYSQL_USER: "${my_sql_user}"
 
-# deployemts:
-#   inputs:
-#     - name: my_sql_user
-#       label: PASSWORD FOR MYSQL USER
-#       type: text
-#       required: true
-#       default: PASSWORD
-#       description: PASSWORD FOR MYSQL USER
-#       size: 1x
+deployemts:
+  inputs:
+    - name: my_sql_user
+      label: PASSWORD FOR MYSQL USER
+      type: text
+      required: true
+      default: PASSWORD
+      description: PASSWORD FOR MYSQL USER
+      size: 1x
 
