@@ -23,10 +23,10 @@ services:
 deployemts:
   inputs:
     - name: my_sql_user
-      label: PASSWORD FOR MYSQL USER
+      label: NAME FOR MYSQL USER
       type: text
       required: true
-      default: PASSWORD
+      default: SUMAN
       description: PASSWORD FOR MYSQL USER
       size: 1x
 
