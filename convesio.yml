@@ -1,0 +1,62 @@
+import:
+  - convesio/mysql:latest
+services:
+  wordpress:
+    source:
+      type: docker
+      image: wordpress
+      copy:
+        - ./plugins:/var/www/html/wp-contents/plugins
+        - ./themes:/var/www/html/wp-contents/themes
+        - ./scripts:/var/www/html/scripts/first-run.sh
+      # first_run: ./scripts/first-run.sh
+      boot: apache2
+      final_image: .......................
+    environment:
+      APPLICATION_TYPE: PHP
+      DEVELOPMENT_MODE: development
+      WORDPRESS_DB_HOST: "0.0.0.0"
+      WORDPRESS_DB_NAME: "wordpress"
+      WORDPRESS_DB_USER: "wpuser"
+      WORDPRESS_DB_PASSWORD: "${my_database_pass}"
+    mount:
+      - uploads:/var/www/html/wp-contents/uploads
+      - cache:/var/cache/convesio
+    route:
+      - 8999:6500/https
+      - 22:2222/ssh
+      - 00:80/default
+    lb_config: true
+    scale:
+      minimum: 1
+      maximum: 2
+      triggers:
+        - observe: cpu
+          is_above: 70
+          metric_type: avarage
+          action: up
+          cooldown: 300
+        - observe: cpu
+          is_below: 50
+          metric_type: avarage
+          action: down
+          cooldown: 300
+
+storage:
+  uploads:
+    type: shared
+    size: 100
+    sftp: true
+  cache:
+    type: io
+    size: 10
+
+deployemts:
+  inputs:
+    - name: my_database_pass
+      label: PASSWORD FOR WORDPRESS
+      type: text
+      required: true
+      default: PASSWORD
+      description: abcd
+      size: 1x
