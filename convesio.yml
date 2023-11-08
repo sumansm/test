@@ -1,5 +1,3 @@
-import:
-  - convesio/mysql:latest
 services:
   wordpress:
     source:
@@ -41,6 +39,38 @@ services:
           metric_type: avarage
           action: down
           cooldown: 300
+
+  mysql:
+    source:
+      type: docker
+      image: mysql:latest
+      container_name: my_mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: my_database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: ${my_database_pass}
+    route:
+      - 3308:3306/http
+      - 00:3306/default
+    lb_config: false
+    volumes:
+      - /opt/components/controller/mysql:/var/lib/mysql
+    resources:
+      - CPU:100
+      - MemoryMB:512
+
+  phpmyadmin:
+    source:
+      type: docker
+      image: phpmyadmin/phpmyadmin:latest
+      container_name: my_phpmyadmin
+    lb_config: true
+    route:
+      - "8088:80/http"
+      - 00:80/default
+    environment:
+      PMA_HOST: mysql
 
 storage:
   uploads:
