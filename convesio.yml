@@ -7,25 +7,25 @@ import:
 
 #  - file::extensions/bot
 
-services:
-  wordpress:
-    environment:
-      WORDPRESS_DB_HOST: "mysql"
-      WORDPRESS_DB_NAME: "my_wordpress"
-      WORDPRESS_DB_USER: "${my_sql_user}"
+# services:
+#   wordpress:
+#     environment:
+#       WORDPRESS_DB_HOST: "mysql"
+#       WORDPRESS_DB_NAME: "my_wordpress"
+#       WORDPRESS_DB_USER: "${my_sql_user}"
 
-  mysql:
-    environment:
-      MYSQL_DATABASE: "my_wordpress"
-      MYSQL_USER: "${my_sql_user}"
+#   mysql:
+#     environment:
+#       MYSQL_DATABASE: "my_wordpress"
+#       MYSQL_USER: "${my_sql_user}"
 
 deployemts:
   inputs:
-    - name: my_sql_user
-      label: NAME FOR MYSQL USER
+    - name: root_password
+      label: MYSQL ROOT USER
       type: text
       required: true
       default: SUMAN
-      description: PASSWORD FOR MYSQL USER
+      description: PASSWORD FOR MYSQL ROOT USER
       size: 1x
 
