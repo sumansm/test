@@ -19,7 +19,7 @@ import:
 #       MYSQL_DATABASE: "my_wordpress"
 #       MYSQL_USER: "${my_sql_user}"
 
-deployemts:
+ui:
   inputs:
     - name: root_password
       label: MYSQL ROOT USER
