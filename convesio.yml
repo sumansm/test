@@ -1,6 +1,6 @@
 import:
   - convesio/wordpress
-   - source: convesio/redis-cluster:4.0
+  - source: convesio/redis-cluster:4.0
      delegates:
        redis-name-change: change_redis
        redis-block: siltuss
