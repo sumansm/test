@@ -2,7 +2,7 @@ import:
   - convesio/wordpress
   - source: convesio/redis-cluster:4.0
      delegates:
-       redis-block: SSSS
+       redis-block: null
     except:
       - redis
       - redis-name-change
