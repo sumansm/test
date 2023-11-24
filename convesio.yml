@@ -3,7 +3,7 @@ import:
   - source: convesio/redis-cluster:4.0
      delegates:
        redis-name-change: change_redis
-       redis-block: siltuss
+       redis-block: null
 
 #  - file::extensions/bot
 
