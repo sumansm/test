@@ -1,11 +1,11 @@
 import:
   - convesio/wordpress
-  - source: convesio/redis-cluster:4.0
-     delegates:
-       redis-block: null
-    except:
-      - redis
-      - redis-name-change
+  # - source: convesio/redis-cluster:4.0
+    #  delegates:
+    #    redis-block: null
+    # except:
+    #   - redis
+    #   - redis-name-change
       
 
 #  - file::extensions/bot
