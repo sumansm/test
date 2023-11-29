@@ -4,8 +4,8 @@ import:
      delegates:
        redis-block: null
     except:
-      - redis
-      # - redis-name-change
+      # - redis
+      - redis-name-change
     
 
 #  - file::extensions/bot
