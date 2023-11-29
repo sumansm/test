@@ -5,7 +5,7 @@ import:
        redis-block: null
     except:
       - redis
-      - redis-name-change
+      # - redis-name-change
     
 
 #  - file::extensions/bot
