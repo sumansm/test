@@ -13,9 +13,9 @@ services:
     environment:
       APPLICATION_TYPE: PHP
       DEVELOPMENT_MODE: development
-      WORDPRESS_DB_HOST: "0.0.0.0"
-      WORDPRESS_DB_NAME: "wordpress"
-      WORDPRESS_DB_USER: "wpuser"
+      WORDPRESS_DB_HOST: "mysql"
+      WORDPRESS_DB_NAME: "${my_db_name}"
+      WORDPRESS_DB_USER: "${my_sql_user}"
       WORDPRESS_DB_PASSWORD: "${my_database_pass}"
     mount:
       - uploads:/var/www/html/wp-contents/uploads
@@ -39,16 +39,15 @@ services:
           metric_type: avarage
           action: down
           cooldown: 300
-
-  mysql:
+ mysql:
     source:
       type: docker
       image: mysql:latest
       container_name: my_mysql_container
     environment:
-      MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_DATABASE: my_database
-      MYSQL_USER: user
+      MYSQL_ROOT_PASSWORD: ${root_password}
+      MYSQL_DATABASE: ${my_db_name}
+      MYSQL_USER: ${my_sql_user}
       MYSQL_PASSWORD: ${my_database_pass}
     route:
       - 3308:3306/http
@@ -81,12 +80,26 @@ storage:
     type: io
     size: 10
 
-deployemts:
+ui:
   inputs:
-    - name: my_database_pass
-      label: PASSWORD FOR WORDPRESS
-      type: text
-      required: true
-      default: PASSWORD
-      description: abcd
-      size: 1x
+      - name: my_database_pass
+        label: PASSWORD FOR WORDPRESS
+        type: text
+        required: true
+        default: PASSWORD
+        description: abcd
+        size: 1x
+      - name: my_db_name
+        label: NAME FOR MYSQL DATABASE
+        type: text
+        required: true
+        default: WORDPRESS
+        description: NAME FOR MYSQL DATABASE
+        size: 1x
+      - name: my_sql_user
+        label: NAME FOR MYSQL USER
+        type: text
+        required: true
+        default: SUMAN
+        description: PASSWORD FOR MYSQL USER
+        size: 1x
