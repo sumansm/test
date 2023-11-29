@@ -1,5 +1,6 @@
 import:
   - convesio/wordpress
+  - convesio/mysql
   # - source: convesio/redis-cluster:4.0
      # delegates:
        # redis-block: null
