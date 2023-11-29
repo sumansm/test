@@ -39,7 +39,7 @@ services:
           metric_type: avarage
           action: down
           cooldown: 300
- mysql:
+  mysql:
     source:
       type: docker
       image: mysql:latest
