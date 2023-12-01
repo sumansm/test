@@ -1,5 +1,5 @@
 import:
-  - convesio/wordpressaa:lll
+  - convesio/wordpress
   - source: convesio/mysql
      delegates:
        phpmyadmin: null
