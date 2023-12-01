@@ -1,6 +1,6 @@
 import:
-  - convesio/wordpress
-  - source: convesio/mysql:lll
+  - convesio/wordpress:lll
+  - source: convesio/mysql
      delegates:
        phpmyadmin: null
     # except:
