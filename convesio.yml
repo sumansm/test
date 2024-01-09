@@ -1,34 +1,57 @@
 import:
-  - convesio/codeigniter
   - source: convesio/mysql
-     delegates:
+    delegates:
        phpmyadmin: null
-    # except:
-      # - redis
-      # - redis-name-change
-    
 
-#  - file::extensions/bot
+services:
+  wordpress:
+    source:
+      type: docker
+      image: wordpress:5.8.2
+      # build: ./dd/dd/
+      copy:
+        - ./plugins:/var/www/html/wp-contents/plugins
+        - ./themes:/var/www/html/wp-contents/themes
+        - ./scripts:/var/www/html/scripts/first-run.sh
+      boot: apache2
+      final_image: .......................
+    environment:
+      APPLICATION_TYPE: PHP
+      DEVELOPMENT_MODE: development
+      WORDPRESS_DB_HOST: "mysql"
+      WORDPRESS_DB_NAME: "${my_database_name}"
+      WORDPRESS_DB_USER: "${my_database_user}"
+      WORDPRESS_DB_PASSWORD: "${my_database_pass}"
+    mount:
+      - uploads:/var/www/html/wp-contents/uploads
+      - cache:/var/cache/convesio
+    route:
+      - 8999:6500/https
+      - 22:2222/ssh
+      - 00:80/default
+    ingress: true
+    scale:
+      minimum: 1
+      maximum: 2
+      triggers:
+        - observe: cpu
+          is_above: 70
+          metric_type: avarage
+          action: up
+          cooldown: 300
+        - observe: cpu
+          is_below: 50
+          metric_type: avarage
+          action: down
+          cooldown: 300
 
-# services:
-#   wordpress:
-#     environment:
-#       WORDPRESS_DB_HOST: "mysql"
-#       WORDPRESS_DB_NAME: "my_wordpress"
-#       WORDPRESS_DB_USER: "${my_sql_user}"
+storage:
+  uploads:
+    type: shared
+    size: 100
+    sftp: true
+  cache:
+    type: io
+    size: 10
 
-#   mysql:
-#     environment:
-#       MYSQL_DATABASE: "my_wordpress"
-#       MYSQL_USER: "${my_sql_user}"
-
-ui:
-  inputs:
-    - name: root_password
-      label: MYSQL ROOT USER
-      type: text
-      required: true
-      default: SUMAN
-      description: PASSWORD FOR MYSQL ROOT USER
-      size: 1x
 
